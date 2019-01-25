@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-public class food : MonoBehaviour
+public class Food : MonoBehaviour
 {
     Animator anim;                              // Reference to the animator component.
-    //GameObject player;                          // Reference to the player GameObject.
-
+                                                //adjust this to change speed
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +18,6 @@ public class food : MonoBehaviour
             anim.SetTrigger("PlayerGrowth");
 
             Destroy(gameObject);
-
         }
     }
 }
