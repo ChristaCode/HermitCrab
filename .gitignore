@@ -5,6 +5,9 @@
 [Bb]uilds/
 [Ll]ogs/
 
+# Library double check
+./Library
+
 # Never ignore Asset meta data
 ![Aa]ssets/**/*.meta
 
