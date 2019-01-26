@@ -14,21 +14,21 @@ public class Food : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Player.Instance.PlayerSize += 1;
+            Player.main.PlayerSize += 1;
 
-            if (Player.Instance.shell == null) // if no shell, heal player
+            if (Player.main.shell == null) // if no shell, heal player
             {
-                Player.Instance.CurrentHealth += 10;
+                Player.main.CurrentHealth += 10;
 
-                if (Player.Instance.CurrentHealth >= Player.Instance.MaxHealth - 10)
-                    Player.Instance.CurrentHealth = Player.Instance.MaxHealth;
+                if (Player.main.CurrentHealth >= Player.main.MaxHealth - 10)
+                    Player.main.CurrentHealth = Player.main.MaxHealth;
             }
             else // if has shell on, heal shell
             {
-                Player.Instance.shell.currentHealth += 10;
+                Player.main.shell.currentHealth += 10;
 
-                if (Player.Instance.shell.currentHealth >= Player.Instance.shell.MAX_HEALTH - 10)
-                    Player.Instance.shell.currentHealth = Player.Instance.shell.MAX_HEALTH;
+                if (Player.main.shell.currentHealth >= Player.main.shell.MAX_HEALTH - 10)
+                    Player.main.shell.currentHealth = Player.main.shell.MAX_HEALTH;
             }
                 
             Destroy(gameObject);

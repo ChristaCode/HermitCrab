@@ -34,22 +34,22 @@ public class HazardDot : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (Player.Instance.shell != null && Player.Instance.shell.currentHealth > 0)
+            if (Player.main.shell != null && Player.main.shell.currentHealth > 0)
             {
-                Player.Instance.shell.currentHealth -= damagePerSecond * Time.deltaTime * Player.Instance.shell.DMG_MULT;
+                Player.main.shell.currentHealth -= damagePerSecond * Time.deltaTime * Player.main.shell.DMG_MULT;
             }
             else
             {
-                if (Player.Instance.CurrentHealth > 0)
+                if (Player.main.CurrentHealth > 0)
                 {
-                    Player.Instance.CurrentHealth -= (damagePerSecond * Time.deltaTime);
+                    Player.main.CurrentHealth -= (damagePerSecond * Time.deltaTime);
                     Debug.Log("time = " + Time.deltaTime);
-                    Debug.Log("health = " + Player.Instance.CurrentHealth);
+                    Debug.Log("health = " + Player.main.CurrentHealth);
                 }
                 else
                 {
                     // player death
-                    Player.Instance.CurrentHealth = 0;
+                    Player.main.CurrentHealth = 0;
                 }
             }
         }
