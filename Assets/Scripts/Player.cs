@@ -56,17 +56,19 @@ public class Player : MonoBehaviour {
             StartCoroutine("ScareSheep");
         }*/
 
-        if (facingRight)
-        {
-            if (!crabSprite.flipX)            
-                crabSprite.flipX = true; 
+        if (crabSprite != null) {
+            if (facingRight)
+            {
+                if (!crabSprite.flipX)            
+                    crabSprite.flipX = true; 
 
-        }
-        else
-        {
-            if (crabSprite.flipX)            
-                crabSprite.flipX = false;              
-            
+            }
+            else
+            {
+                if (crabSprite.flipX)            
+                    crabSprite.flipX = false;              
+                
+            }
         }
 
         if (MoveHorizontal > 0 && !facingRight)
@@ -94,22 +96,19 @@ public class Player : MonoBehaviour {
         _rb.velocity = new Vector3(MoveHorizontal * MaxSpeed, _rb.velocity.y, MoveVertical * MaxSpeed);
         CurrentSpeed = MoveVertical * MaxSpeed;
 
-        if (MoveHorizontal < -0.1 || MoveHorizontal > 0.1)
-            crabAnimations.SetFloat("Speed", 1);
-        
-        if (MoveVertical < -0.1 || MoveVertical > 0.1)
-            crabAnimations.SetFloat("Speed", 1);
-
+        if (crabAnimations != null) {
+            float animationSpeed = Vector2.ClampMagnitude(new Vector2(MoveHorizontal, MoveVertical).normalized, 1f).magnitude;
+            crabAnimations.SetFloat("Speed", animationSpeed);
+        }
         if (MoveVertical == 0 && MoveHorizontal == 0)
         {
-            crabAnimations.SetFloat("Speed", 0);
             idleTimer += Time.deltaTime;
         }
-        else
-            if (idleTimer > 0)
-            idleTimer = 0f;
+        else {
+            idleTimer = 0f;    
+        }
 
-        if (idleTimer >= 5)
+        if (idleTimer >= 5f)
             crabAnimations.SetTrigger("Sit");
 
     }    
