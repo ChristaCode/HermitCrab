@@ -33,7 +33,7 @@ public class Player : Singleton<Player> {
         Instance = this;
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
 
-        crabAnimations = GetComponent<Animator>();
+        //crabAnimations = GetComponent<Animator>();
 
         _rb = GetComponent<Rigidbody>();
     }
@@ -92,7 +92,7 @@ public class Player : Singleton<Player> {
         }
 
         if (crabAnimations != null && idleTimer >= 5f)
-            crabAnimations.SetTrigger("Sit");
+            //crabAnimations.SetTrigger("Sit");
 
         if (actionPressed) {
             OnTryWearShell();
