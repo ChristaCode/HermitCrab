@@ -10,10 +10,7 @@ public class Player : MonoBehaviour {
     Vector3 targetPos;
     SpriteRenderer crabSprite;
     Animator crabAnimations;
-    AudioSource bark;
     float idleTimer;
-    [SerializeField] AudioClip Barks;
-    [SerializeField] GameObject _woofLines;
 
 
     public float PlayerSize = 1f;
@@ -28,7 +25,6 @@ public class Player : MonoBehaviour {
         Instance = this;
         crabSprite = GetComponent<SpriteRenderer>();
         crabAnimations = GetComponent<Animator>();
-        bark = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody>();
         //_mySprite = GetComponent<SpriteRenderer>();
 
