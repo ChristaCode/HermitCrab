@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
     Animator crabAnimations;
     float idleTimer;
 
-
     public float PlayerSize = 1f;
     public float CurrentSpeed;
 
