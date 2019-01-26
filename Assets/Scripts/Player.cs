@@ -10,6 +10,7 @@ public class Player : Singleton<Player> {
     public float PlayerSize = 1f;
     public float CurrentSpeed;
     public float SHELL_GRAB_RANGE = 1f;
+    public Animator crabAnimations;
 
     public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
     private ShellParent _shell;
@@ -18,7 +19,6 @@ public class Player : Singleton<Player> {
     float MoveVertical;
     bool facingRight;
     Vector3 targetPos;
-    Animator crabAnimations;
     float idleTimer;
 
     public float MaxHealth = 100;
@@ -30,9 +30,12 @@ public class Player : Singleton<Player> {
     void Start()
     {
         Instance = this;
+<<<<<<< HEAD
 
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
         crabAnimations = GetComponent<Animator>();
+=======
+>>>>>>> d090faa29ebbfd82ec0e5257a69afc0ec84ab0df
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -74,7 +77,7 @@ public class Player : Singleton<Player> {
         CurrentSpeed = MoveVertical * MaxSpeed;
 
         if (crabAnimations != null) {
-            float animationSpeed = Vector2.ClampMagnitude(new Vector2(MoveHorizontal, MoveVertical).normalized, 1f).magnitude;
+            float animationSpeed = Vector2.ClampMagnitude(new Vector2(MoveHorizontal, MoveVertical), 1f).magnitude;
             crabAnimations.SetFloat("Speed", animationSpeed);
         }
         if (MoveVertical == 0 && MoveHorizontal == 0)
