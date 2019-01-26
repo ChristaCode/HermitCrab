@@ -19,16 +19,12 @@ public class CamFollowPlayer : MonoBehaviour {
     bool isMovingUp;
     float lastPos;
   
-
     Transform _playerPos;
     
     void Start()
     {
         lastPos = transform.position.y;
         _playerPos = GameObject.Find("Cam Target").transform;
-
-       
-
     }
     void Update ()
     {     

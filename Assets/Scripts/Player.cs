@@ -20,7 +20,6 @@ public class Player : Singleton<Player> {
     Animator crabAnimations;
     float idleTimer;
 
-
     public int MaxHealth = 100;
     public int CurrentHealth = 100;
 
