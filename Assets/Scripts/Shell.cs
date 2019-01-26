@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shell : MonoBehaviour
 {
@@ -18,9 +19,13 @@ public class Shell : MonoBehaviour
 
     private int currentHealth;
 
+    Image shellHealthBar;
+
     // Start is called before the first frame update
     void Start()
     {
+        shellHealthBar = GameObject.Find("ShellHealthBar").GetComponent<Image>();
+
         switch (type)
         {
             case Type.Default:
@@ -45,6 +50,6 @@ public class Shell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        shellHealthBar.fillAmount = (float)(currentHealth * .01);
     }
 }

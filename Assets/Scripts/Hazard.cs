@@ -49,8 +49,6 @@ public class Hazard : MonoBehaviour
                     Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
                 }
             }
-
-            Destroy(gameObject);
         }
     }
 }

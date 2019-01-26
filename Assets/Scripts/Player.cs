@@ -11,6 +11,7 @@ public class Player : Singleton<Player> {
     public float CurrentSpeed;
     public float SHELL_GRAB_RANGE = 1f;
     public Animator crabAnimations;
+    public bool shellEquipped = true;
 
     public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
     private ShellParent _shell;
@@ -31,6 +32,7 @@ public class Player : Singleton<Player> {
     {
         Instance = this;
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
+
         crabAnimations = GetComponent<Animator>();
 
         _rb = GetComponent<Rigidbody>();
@@ -41,7 +43,8 @@ public class Player : Singleton<Player> {
         Debug.Log("HEALTHBAR FILL AMOUNT" + healthBar.fillAmount);
         Debug.Log("CURRENT HEALTH" + CurrentHealth);
 
-        healthBar.fillAmount = (float)(CurrentHealth * .01);
+        if(shell == null)
+            healthBar.fillAmount = (float)(CurrentHealth * .01);
 
         if (MoveHorizontal > 0f)
             facingRight = true;
