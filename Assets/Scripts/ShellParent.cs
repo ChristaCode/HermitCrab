@@ -61,7 +61,6 @@ public class ShellParent : MonoBehaviour
         shellHealthBar.fillAmount = (float)(currentHealth * .01);
     }
 
-
     public void Attach(Transform newParent) {
 		if (attachParent != null) {
 			//There already is a parent
@@ -78,6 +77,5 @@ public class ShellParent : MonoBehaviour
 		attachParent = null;
 		transform.parent = null;
 	}
-
 
 }

@@ -34,6 +34,10 @@ public class Player : Singleton<Player> {
     {
         shell = shell; //lol
         main = this;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5c42d36aedfd582b22d20270c6da70843d15ba00
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
 
         //crabAnimations = GetComponent<Animator>();
@@ -43,13 +47,15 @@ public class Player : Singleton<Player> {
 
     void Update()
     {
-        Debug.Log("HEALTHBAR FILL AMOUNT" + healthBar.fillAmount);
-        Debug.Log("CURRENT HEALTH" + CurrentHealth);
-
         // if there's no shell, update player health bar
         if (shell == null)
         {
             healthBar.fillAmount = (float)(CurrentHealth * .01);
+        }
+
+        if (CurrentHealth < .1)
+        {
+            Death();
         }
 
         if (MoveHorizontal > 0f)
@@ -61,6 +67,12 @@ public class Player : Singleton<Player> {
             {
                 transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
+    }
+
+    void Death()
+    {
+        //Destroy(gameObject);
+
     }
 
     void FixedUpdate()
