@@ -3,7 +3,7 @@
 public class Food : MonoBehaviour
 {
     Animator anim;                              // Reference to the animator component.
-                                                //adjust this to change speed
+
     // Start is called before the first frame update
     void Start()
     {

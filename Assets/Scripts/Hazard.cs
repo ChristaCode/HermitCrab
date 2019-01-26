@@ -4,43 +4,53 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    public int damage = 1;
+    private float damage;
+    public Type type = Type.Rock;
+
+    public enum Type
+    {
+        Rock,
+        Pebble,
+        Fish,
+    };
+
+    void Start()
+    { 
+        Debug.Log("Hazard/onTriggerEnter");
+        switch (type)
+        {
+            case Type.Rock:
+                damage = 20;
+                break;
+            case Type.Pebble:
+                damage = 0;
+                break;
+            case Type.Fish:
+                damage = 100;
+                break;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Hazard/onTriggerEnter");
-        }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log("health = " + Player.Instance.CurrentHealth);
-
-        if (other.gameObject.tag == "Player")
-        {
-            if (Player.Instance.CurrentHealth >= 0)
+            if (Player.Instance.shell == null)
             {
-                // casting to int here not a good idea? Player health should be
-                // defined as a float or we need to depleat it slower than 1 hp every
-                // update loop
-                Player.Instance.CurrentHealth -= (int)(damage * Time.deltaTime);
+                //death out of shell
+                Player.Instance.CurrentHealth = 0;
             }
             else
             {
-                //kill player
-                Player.Instance.CurrentHealth = 0;
-                Destroy(Player.Instance);
+                if (Player.Instance.shell.currentHealth > 0)
+                {
+                    Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
+                }
             }
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("Hazard/onTriggerExit");
+            Destroy(gameObject);
         }
     }
 }

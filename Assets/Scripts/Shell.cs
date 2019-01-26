@@ -18,7 +18,6 @@ public class Shell : MonoBehaviour
 
     private int currentHealth;
 
-
     // Start is called before the first frame update
     void Start()
     {
