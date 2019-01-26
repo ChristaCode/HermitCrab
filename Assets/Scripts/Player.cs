@@ -2,6 +2,8 @@
 
 public class Player : Singleton<Player> {
 
+    // comment for re-adding player 
+
     public static Player Instance;
     public float MaxSpeed = 10f;
     public float PlayerSize = 1f;
