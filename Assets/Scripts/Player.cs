@@ -12,6 +12,9 @@ public class Player : Singleton<Player> {
     public Animator crabAnimations;
     public bool shellEquipped = true;
 
+    public SpriteRenderer shellRenderer;
+    public Sprite[] shellSprites;
+
     public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
     private ShellParent _shell;
 
@@ -29,9 +32,14 @@ public class Player : Singleton<Player> {
 
     void Start()
     {
+<<<<<<< HEAD
+=======
+        shell = shell; //lol
+        Instance = this;
+>>>>>>> 5349e4b2b7fdf37117f5ca02026e0e9ee2f8712f
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
 
-        crabAnimations = GetComponent<Animator>();
+        //crabAnimations = GetComponent<Animator>();
 
         _rb = GetComponent<Rigidbody>();
     }
@@ -90,7 +98,7 @@ public class Player : Singleton<Player> {
         }
 
         if (crabAnimations != null && idleTimer >= 5f)
-            crabAnimations.SetTrigger("Sit");
+            //crabAnimations.SetTrigger("Sit");
 
         if (actionPressed) {
             OnTryWearShell();
@@ -117,9 +125,17 @@ public class Player : Singleton<Player> {
         if (newShell != null) {
             newShell.Attach(transform);
         } else {
-            _shell.Drop();
+            if (newShell != null) {
+                _shell.Drop();
+            }
         }
         _shell = newShell;
+        UpdateShellGraphic();
+    }
+
+    private void UpdateShellGraphic() {
+        int shellIndex = (_shell == null) ? 0 : ((int)_shell.type + 1);
+        shellRenderer.sprite = shellSprites[shellIndex];
     }
 
     private void DropShell() {
