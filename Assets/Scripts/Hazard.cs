@@ -30,23 +30,23 @@ public class Hazard : MonoBehaviour
                 break;
         }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Hazard/onTriggerEnter");
 
-            if (Player.Instance.shell == null)
+            if (Player.main.shell == null)
             {
                 //death out of shell
-                Player.Instance.CurrentHealth = 0;
+                Player.main.CurrentHealth = 0;
             }
             else
             {
-                if (Player.Instance.shell.currentHealth > 0)
+                if (Player.main.shell.currentHealth > 0)
                 {
-                    Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
+                    Player.main.shell.currentHealth -= damage * Player.main.shell.DMG_MULT;
                 }
             }
         }
