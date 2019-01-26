@@ -4,39 +4,51 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    public float damagePerSecond = 1;
+    private float damage;
+    public Type type = Type.Rock;
+
+    public enum Type
+    {
+        Rock,
+        Pebble,
+        Fish,
+    };
+
+    void Start()
+    { 
+        Debug.Log("Hazard/onTriggerEnter");
+        switch (type)
+        {
+            case Type.Rock:
+                damage = 20;
+                break;
+            case Type.Pebble:
+                damage = 0;
+                break;
+            case Type.Fish:
+                damage = 100;
+                break;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Hazard/onTriggerEnter");
-        }
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            if (Player.Instance.CurrentHealth > 0)
+            if (Player.Instance.shell == null)
             {
-                Player.Instance.CurrentHealth -= (damagePerSecond * Time.deltaTime) * 100;
-                Debug.Log("time = " + Time.deltaTime);
-                Debug.Log("health = " + Player.Instance.CurrentHealth);
+                //death out of shell
+                Player.Instance.CurrentHealth = 0;
             }
             else
             {
-                Player.Instance.CurrentHealth = 0;
-                //Destroy(Player.Instance);
+                if (Player.Instance.shell.currentHealth > 0)
+                {
+                    Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
+                }
             }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            Debug.Log("Hazard/onTriggerExit");
         }
     }
 }

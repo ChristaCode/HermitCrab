@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Singleton<Player> {
 
@@ -10,6 +11,7 @@ public class Player : Singleton<Player> {
     public float CurrentSpeed;
     public float SHELL_GRAB_RANGE = 1f;
     public Animator crabAnimations;
+    public bool shellEquipped = true;
 
     public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
     private ShellParent _shell;
@@ -24,19 +26,29 @@ public class Player : Singleton<Player> {
     public float CurrentHealth = 100;
 
     Rigidbody _rb;
+    Image healthBar;
 
-    SpriteRenderer _mySprite;
-
-    void Start ()
+    void Start()
     {
         Instance = this;
+        healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
+
+        crabAnimations = GetComponent<Animator>();
+
         _rb = GetComponent<Rigidbody>();
-
     }
-
 
     void Update()
     {
+        Debug.Log("HEALTHBAR FILL AMOUNT" + healthBar.fillAmount);
+        Debug.Log("CURRENT HEALTH" + CurrentHealth);
+
+        // if there's no shell, update player health bar
+        if (shell == null)
+        {
+            healthBar.fillAmount = (float)(CurrentHealth * .01);
+        }
+
         if (MoveHorizontal > 0f)
             facingRight = true;
         else if (MoveHorizontal < 0f)

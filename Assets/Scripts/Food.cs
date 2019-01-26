@@ -3,7 +3,7 @@
 public class Food : MonoBehaviour
 {
     Animator anim;                              // Reference to the animator component.
-                                                //adjust this to change speed
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,20 +14,21 @@ public class Food : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("player has entered");
-
             Player.Instance.PlayerSize += 1;
 
-            // if current health is less than max health - 10, add ten to health
-            if (Player.Instance.CurrentHealth < Player.Instance.MaxHealth - 10)
+            if (Player.Instance.shell == null) // if no shell, heal player
             {
                 Player.Instance.CurrentHealth += 10;
-            }
 
-            // if current health is less than ten points to max health, set to max health
-            else if (Player.Instance.CurrentHealth >= Player.Instance.MaxHealth - 10)
+                if (Player.Instance.CurrentHealth >= Player.Instance.MaxHealth - 10)
+                    Player.Instance.CurrentHealth = Player.Instance.MaxHealth;
+            }
+            else // if has shell on, heal shell
             {
-                Player.Instance.CurrentHealth = Player.Instance.MaxHealth;
+                Player.Instance.shell.currentHealth += 10;
+
+                if (Player.Instance.shell.currentHealth >= Player.Instance.shell.MAX_HEALTH - 10)
+                    Player.Instance.shell.currentHealth = Player.Instance.shell.MAX_HEALTH;
             }
                 
             Destroy(gameObject);
