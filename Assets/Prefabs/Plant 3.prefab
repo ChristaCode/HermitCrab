@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816011548512072241}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 1.78, z: 0.52}
+  m_LocalPosition: {x: 0, y: 2.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 816011549626821659}
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 45d8ee0765f0a6f4490491e26e8a2090, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b19531be1f2cd44489690bbe2075b8f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816011549626821659}
-  - component: {fileID: 816011549626821656}
+  - component: {fileID: 2196816306580595956}
   m_Layer: 0
   m_Name: Plant 3
   m_TagString: Untagged
@@ -105,14 +105,14 @@ Transform:
   m_GameObject: {fileID: 816011549626821657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 52.82, y: 0, z: 408.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_Children:
   - {fileID: 816011548512072240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &816011549626821656
-BoxCollider:
+--- !u!135 &2196816306580595956
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -122,5 +122,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4441261, y: 3.1627126, z: 0.81173706}
-  m_Center: {x: -0.09811211, y: 1.58, z: 0.37916565}
+  m_Radius: 0.85
+  m_Center: {x: 0, y: 0.76, z: 0.42}
