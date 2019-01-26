@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
 
 
     public float PlayerSize = 1f;
+    public int MaxHealth = 100;
+    public int CurrentHealth = 100;
     public float CurrentSpeed;
 
     Rigidbody _rb;
