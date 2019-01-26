@@ -3,13 +3,11 @@
 public class Food : MonoBehaviour
 {
     Animator anim;                              // Reference to the animator component.
-    Animator herbAnimator;
                                                 //adjust this to change speed
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        herbAnimator = GameObject.Find("Herbert").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)

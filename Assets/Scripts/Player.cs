@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 public class Player : Singleton<Player> {
-    
+
+    public static Player Instance;
     public float MaxSpeed = 10f;
     public float PlayerSize = 1f;
     public float CurrentSpeed;
@@ -18,10 +19,8 @@ public class Player : Singleton<Player> {
     float idleTimer;
 
 
-    public float PlayerSize = 1f;
     public int MaxHealth = 100;
     public int CurrentHealth = 100;
-    public float CurrentSpeed;
 
     Rigidbody _rb;
 
@@ -29,6 +28,7 @@ public class Player : Singleton<Player> {
 
     void Start ()
     {
+        Instance = this;
         crabAnimations = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
 
