@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Singleton<Player> {
 
@@ -24,20 +25,24 @@ public class Player : Singleton<Player> {
     public float CurrentHealth = 100;
 
     Rigidbody _rb;
+    Image healthBar;
 
-    SpriteRenderer _mySprite;
-
-    void Start ()
+    void Start()
     {
         Instance = this;
+
+        healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
         crabAnimations = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
-
     }
-
 
     void Update()
     {
+        Debug.Log("HEALTHBAR FILL AMOUNT" + healthBar.fillAmount);
+        Debug.Log("CURRENT HEALTH" + CurrentHealth);
+
+        healthBar.fillAmount = (float)(CurrentHealth * .01);
+
         if (MoveHorizontal > 0f)
             facingRight = true;
         else if (MoveHorizontal < 0f)

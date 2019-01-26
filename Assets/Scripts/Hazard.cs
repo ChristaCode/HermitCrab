@@ -10,7 +10,7 @@ public class Hazard : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hazard/onTriggerEnter");
+            //Debug.Log("Hazard/onTriggerEnter");
         }
     }
 
@@ -21,13 +21,12 @@ public class Hazard : MonoBehaviour
             if (Player.Instance.CurrentHealth > 0)
             {
                 Player.Instance.CurrentHealth -= (damagePerSecond * Time.deltaTime) * 100;
-                Debug.Log("time = " + Time.deltaTime);
-                Debug.Log("health = " + Player.Instance.CurrentHealth);
+                //Debug.Log("time = " + Time.deltaTime);
+                //Debug.Log("health = " + Player.Instance.CurrentHealth);
             }
             else
             {
                 Player.Instance.CurrentHealth = 0;
-                //Destroy(Player.Instance);
             }
         }
     }
@@ -36,7 +35,7 @@ public class Hazard : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hazard/onTriggerExit");
+            //Debug.Log("Hazard/onTriggerExit");
         }
     }
 }
