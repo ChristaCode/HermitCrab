@@ -7,6 +7,7 @@ public class Player : Singleton<Player> {
     public float PlayerSize = 1f;
     public float CurrentSpeed;
     public float SHELL_GRAB_RANGE = 1f;
+    public Animator crabAnimations;
 
     public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
     private ShellParent _shell;
@@ -15,7 +16,6 @@ public class Player : Singleton<Player> {
     float MoveVertical;
     bool facingRight;
     Vector3 targetPos;
-    Animator crabAnimations;
     float idleTimer;
 
 
@@ -29,7 +29,6 @@ public class Player : Singleton<Player> {
     void Start ()
     {
         Instance = this;
-        crabAnimations = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
 
     }
