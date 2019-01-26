@@ -6,18 +6,6 @@ public class Hazard : MonoBehaviour
 {
     public int damage = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -42,6 +30,8 @@ public class Hazard : MonoBehaviour
             else
             {
                 //kill player
+                Player.Instance.CurrentHealth = 0;
+                Destroy(Player.Instance);
             }
         }
     }
