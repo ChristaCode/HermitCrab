@@ -68,7 +68,7 @@ public class Player : Singleton<Player> {
         CurrentSpeed = MoveVertical * MaxSpeed;
 
         if (crabAnimations != null) {
-            float animationSpeed = Vector2.ClampMagnitude(new Vector2(MoveHorizontal, MoveVertical).normalized, 1f).magnitude;
+            float animationSpeed = Vector2.ClampMagnitude(new Vector2(MoveHorizontal, MoveVertical), 1f).magnitude;
             crabAnimations.SetFloat("Speed", animationSpeed);
         }
         if (MoveVertical == 0 && MoveHorizontal == 0)
