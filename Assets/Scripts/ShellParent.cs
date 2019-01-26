@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShellParent : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class ShellParent : MonoBehaviour
     [HideInInspector] public float DMG_MULT;
 
     public float currentHealth;
-
+    Image shellHealthBar;
 
     // Start is called before the first frame update
     void Start()
     {
+        shellHealthBar = GameObject.Find("ShellHealthBar").GetComponent<Image>();
+
         switch (type)
         {
             case Type.Default:
@@ -55,9 +58,9 @@ public class ShellParent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        shellHealthBar.fillAmount = (float)(currentHealth * .01);
     }
-   
+
 
     public void Attach(Transform newParent) {
 		if (attachParent != null) {

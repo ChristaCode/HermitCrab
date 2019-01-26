@@ -43,8 +43,11 @@ public class Player : Singleton<Player> {
         Debug.Log("HEALTHBAR FILL AMOUNT" + healthBar.fillAmount);
         Debug.Log("CURRENT HEALTH" + CurrentHealth);
 
-        if(shell == null)
+        // if there's no shell, update player health bar
+        if (shell == null)
+        {
             healthBar.fillAmount = (float)(CurrentHealth * .01);
+        }
 
         if (MoveHorizontal > 0f)
             facingRight = true;
