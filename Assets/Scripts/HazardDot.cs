@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HazardDot : MonoBehaviour
 {
-    public float damagePerSecond = 1;
+    private float damagePerSecond;
     public Type type = Type.Heat;
 
     public enum Type
@@ -17,7 +17,7 @@ public class HazardDot : MonoBehaviour
         switch (type)
         {
             case Type.Heat:
-                damagePerSecond = 100;
+                damagePerSecond = 1;
                 break;
         }
     }
@@ -48,8 +48,8 @@ public class HazardDot : MonoBehaviour
                 }
                 else
                 {
+                    // player death
                     Player.Instance.CurrentHealth = 0;
-                    //Destroy(Player.Instance);
                 }
             }
         }

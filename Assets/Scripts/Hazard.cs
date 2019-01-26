@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    public float damage;
+    private float damage;
     public Type type = Type.Rock;
 
     public enum Type
@@ -36,17 +36,17 @@ public class Hazard : MonoBehaviour
         {
             Debug.Log("Hazard/onTriggerEnter");
 
-            if (Player.Instance.shell != null)
+            if (Player.Instance.shell == null)
             {
                 //death out of shell
                 Player.Instance.CurrentHealth = 0;
             }
             else
-            {   Debug.Log("Hazard/Player.Instance.shell" + Player.Instance.shell);
-                //if (Player.Instance.shell.currentHealth > 0)
-                //{
-                Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
-               //}
+            {
+                if (Player.Instance.shell.currentHealth > 0)
+                {
+                    Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
+                }
             }
 
             Destroy(gameObject);
