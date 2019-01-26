@@ -21,15 +21,17 @@ public class Food : MonoBehaviour
             Player.Instance.PlayerSize += 1;
 
             // if current health is less than max health - 10, add ten to health
-            if (Player.Instance.CurrentHealth < Player.Instance.MaxHealth - 10) 
+            if (Player.Instance.CurrentHealth < Player.Instance.MaxHealth - 10)
+            {
                 Player.Instance.CurrentHealth += 10;
+            }
 
             // if current health is less than ten points to max health, set to max health
-            if (Player.Instance.CurrentHealth >= Player.Instance.MaxHealth - 10)
+            else if (Player.Instance.CurrentHealth >= Player.Instance.MaxHealth - 10)
+            {
                 Player.Instance.CurrentHealth = Player.Instance.MaxHealth;
-
-            herbAnimator.SetTrigger("PlayerGrowth");
-
+            }
+                
             Destroy(gameObject);
         }
     }
