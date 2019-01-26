@@ -34,10 +34,6 @@ public class Player : Singleton<Player> {
     {
         shell = shell; //lol
         main = this;
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c42d36aedfd582b22d20270c6da70843d15ba00
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
 
         //crabAnimations = GetComponent<Animator>();
