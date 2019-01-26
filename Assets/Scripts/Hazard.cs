@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    public float damage = .1f;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,8 @@ public class Hazard : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("health = " + Player.Instance.CurrentHealth);
+
         if (other.gameObject.tag == "Player")
         {
             if (Player.Instance.CurrentHealth >= 0)
