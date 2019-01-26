@@ -22,7 +22,12 @@ public class CameraManager : Singleton < CameraManager > {
 		tracker.position = Vector3.SmoothDamp ( tracker.position, target.position + targetOffset, ref trackerSmooth, trackSpeed );
 		transform.position = Vector3.SmoothDamp ( transform.position, tracker.position + trackerOffsets [ offsetUsed ], ref followSmooth, followSpeed );
 		transform.LookAt ( tracker.position, Vector3.up );
-	}
+
+        if (Shark.main.hasTriggered)
+        {
+            target = GameObject.Find("Trigger").transform;
+        }
+    }
 
 	public void TargetTransform ( Transform trans, int newOffset = 1 ) {
 		target = trans;
