@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    public int damage = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public float damagePerSecond = 1;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,20 +16,18 @@ public class Hazard : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("health = " + Player.Instance.CurrentHealth);
-
         if (other.gameObject.tag == "Player")
         {
-            if (Player.Instance.CurrentHealth >= 0)
+            if (Player.Instance.CurrentHealth > 0)
             {
-                // casting to int here not a good idea? Player health should be
-                // defined as a float or we need to depleat it slower than 1 hp every
-                // update loop
-                Player.Instance.CurrentHealth -= (int)(damage * Time.deltaTime);
+                Player.Instance.CurrentHealth -= (damagePerSecond * Time.deltaTime) * 100;
+                Debug.Log("time = " + Time.deltaTime);
+                Debug.Log("health = " + Player.Instance.CurrentHealth);
             }
             else
             {
-                //kill player
+                Player.Instance.CurrentHealth = 0;
+                //Destroy(Player.Instance);
             }
         }
     }

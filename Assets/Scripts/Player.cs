@@ -2,6 +2,8 @@
 
 public class Player : Singleton<Player> {
 
+    // comment for re-adding player 
+
     public static Player Instance;
     public float MaxSpeed = 10f;
     public float PlayerSize = 1f;
@@ -18,9 +20,8 @@ public class Player : Singleton<Player> {
     Vector3 targetPos;
     float idleTimer;
 
-
-    public int MaxHealth = 100;
-    public int CurrentHealth = 100;
+    public float MaxHealth = 100;
+    public float CurrentHealth = 100;
 
     Rigidbody _rb;
 
