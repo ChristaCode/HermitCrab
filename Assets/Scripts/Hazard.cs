@@ -15,12 +15,10 @@ public class Hazard : MonoBehaviour
     };
 
     void Start()
-    {
+    { 
+        Debug.Log("Hazard/onTriggerEnter");
         switch (type)
         {
-<<<<<<< HEAD
-            //Debug.Log("Hazard/onTriggerEnter");
-=======
             case Type.Rock:
                 damage = 20;
                 break;
@@ -30,7 +28,6 @@ public class Hazard : MonoBehaviour
             case Type.Fish:
                 damage = 100;
                 break;
->>>>>>> d090faa29ebbfd82ec0e5257a69afc0ec84ab0df
         }
     }
 
@@ -42,15 +39,6 @@ public class Hazard : MonoBehaviour
 
             if (Player.Instance.shell == null)
             {
-<<<<<<< HEAD
-                Player.Instance.CurrentHealth -= (damagePerSecond * Time.deltaTime) * 100;
-                //Debug.Log("time = " + Time.deltaTime);
-                //Debug.Log("health = " + Player.Instance.CurrentHealth);
-            }
-            else
-            {
-                Player.Instance.CurrentHealth = 0;
-=======
                 //death out of shell
                 Player.Instance.CurrentHealth = 0;
             }
@@ -60,18 +48,9 @@ public class Hazard : MonoBehaviour
                 {
                     Player.Instance.shell.currentHealth -= damage * Player.Instance.shell.DMG_MULT;
                 }
->>>>>>> d090faa29ebbfd82ec0e5257a69afc0ec84ab0df
             }
 
-<<<<<<< HEAD
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //Debug.Log("Hazard/onTriggerExit");
-=======
             Destroy(gameObject);
->>>>>>> d090faa29ebbfd82ec0e5257a69afc0ec84ab0df
         }
     }
 }

@@ -30,12 +30,9 @@ public class Player : Singleton<Player> {
     void Start()
     {
         Instance = this;
-<<<<<<< HEAD
-
         healthBar = GameObject.Find("HealthBar").GetComponent<Image>();
         crabAnimations = GetComponent<Animator>();
-=======
->>>>>>> d090faa29ebbfd82ec0e5257a69afc0ec84ab0df
+
         _rb = GetComponent<Rigidbody>();
     }
 
