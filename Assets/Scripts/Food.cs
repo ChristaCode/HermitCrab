@@ -14,7 +14,7 @@ public class Food : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Player.Instance.PlayerSize += 1;
+            Player.main.PlayerSize += 1;
             anim.SetTrigger("PlayerGrowth");
 
             Destroy(gameObject);

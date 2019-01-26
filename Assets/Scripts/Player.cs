@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour {
-
-    public static Player Instance;
+public class Player : Singleton<Player> {
+    
     public float MaxSpeed = 10f;
+    public float PlayerSize = 1f;
+    public float CurrentSpeed;
+    public float SHELL_GRAB_RANGE = 1f;
+
+    public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
+    private ShellParent _shell;
+
     float MoveHorizontal;
     float MoveVertical;
     bool facingRight;
     Vector3 targetPos;
-    SpriteRenderer crabSprite;
     Animator crabAnimations;
     float idleTimer;
 
 
-    public float PlayerSize = 1f;
-    public float CurrentSpeed;
 
     Rigidbody _rb;
 
@@ -22,56 +25,23 @@ public class Player : MonoBehaviour {
 
     void Start ()
     {
-        Instance = this;
-        crabSprite = GetComponent<SpriteRenderer>();
         crabAnimations = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
-        //_mySprite = GetComponent<SpriteRenderer>();
-
-        
 
     }
-    
+
+
     void Update()
     {
-        //if (SceneMgr.Instance.GameOver)
-          //  return;
-
-        //_mySprite.sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1; //this means the dog will be drawn in fron of or behind items if it is higher/lower than them
-
-        /*if (Input.GetButtonDown("Bark"))
-        {
-            if (bark.isPlaying)
-                return;
-
-            int b = Random.Range(0, 3);
-            bark.clip = Barks[b];
-            _woofAnim.SetTrigger("isBarking");
-
-            bark.Play();
-            StartCoroutine("ScareSheep");
-        }*/
-
-        if (crabSprite != null) {
-            if (facingRight)
-            {
-                if (!crabSprite.flipX)            
-                    crabSprite.flipX = true; 
-
-            }
-            else
-            {
-                if (crabSprite.flipX)            
-                    crabSprite.flipX = false;              
-                
-            }
-        }
-
-        if (MoveHorizontal > 0 && !facingRight)
+        if (MoveHorizontal > 0f)
             facingRight = true;
-        else if (MoveHorizontal < 0 && facingRight)
+        else if (MoveHorizontal < 0f)
             facingRight = false;
-        
+
+            if (facingRight != transform.localScale.x > 0f)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
     }
 
     void FixedUpdate()
@@ -88,6 +58,7 @@ public class Player : MonoBehaviour {
         //for Keyboard Input/////////////////////////////////////////////////////////////////////////////////////////////
         MoveHorizontal = Input.GetAxis("Horizontal");
         MoveVertical = Input.GetAxis("Vertical");
+        bool actionPressed = Input.GetKeyDown(KeyCode.Space);
 
         _rb.velocity = new Vector3(MoveHorizontal * MaxSpeed, _rb.velocity.y, MoveVertical * MaxSpeed);
         CurrentSpeed = MoveVertical * MaxSpeed;
@@ -104,8 +75,40 @@ public class Player : MonoBehaviour {
             idleTimer = 0f;    
         }
 
-        if (idleTimer >= 5f)
+        if (crabAnimations != null && idleTimer >= 5f)
             crabAnimations.SetTrigger("Sit");
 
+        if (actionPressed) {
+            OnTryWearShell();
+        }
+
     }    
+
+    private void OnTryWearShell() {
+        if (shell != null) {
+            shell = null;
+            return;
+        }
+
+        ShellParent[] shells = FindObjectsOfType<ShellParent>();
+        foreach (ShellParent currentShell in shells) {
+            float distance = (transform.position - currentShell.transform.position).magnitude;
+            if (distance <= SHELL_GRAB_RANGE) {
+                shell = currentShell;
+            }
+        }
+    }
+
+    private void OnWearShell(ShellParent newShell) {
+        if (newShell != null) {
+            newShell.Attach(transform);
+        } else {
+            _shell.Drop();
+        }
+        _shell = newShell;
+    }
+
+    private void DropShell() {
+        shell = null;
+    }
 }
