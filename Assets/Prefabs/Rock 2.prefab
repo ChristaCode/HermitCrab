@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4790708091438099189}
   - component: {fileID: 6400789559359433320}
+  - component: {fileID: 4639989674726100961}
   m_Layer: 0
   m_Name: Rock 2
   m_TagString: Untagged
@@ -45,6 +46,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.86
   m_Center: {x: 0, y: 0.72, z: 0.33}
+--- !u!114 &4639989674726100961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613618736760599974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411e204f047c3714090a9dc570665a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 6179381994891342908}
 --- !u!1 &2249611254719000458
 GameObject:
   m_ObjectHideFlags: 0

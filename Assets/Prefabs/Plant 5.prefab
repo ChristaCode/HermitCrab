@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6715414036814833039}
   - component: {fileID: 5196687332167642464}
+  - component: {fileID: 5101367867919628083}
   m_Layer: 0
   m_Name: Plant 5
   m_TagString: Untagged
@@ -45,6 +46,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.994941
   m_Center: {x: 0, y: 0.76000005, z: 0.27505907}
+--- !u!114 &5101367867919628083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715414036814833037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411e204f047c3714090a9dc570665a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 6715414037984181159}
 --- !u!1 &6715414037984181157
 GameObject:
   m_ObjectHideFlags: 0
