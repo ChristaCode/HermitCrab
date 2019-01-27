@@ -19,6 +19,7 @@ public class Food : MonoBehaviour
             if (Player.main.shell == null) // if no shell, heal player
             {
                 Player.main.CurrentHealth += 10;
+                Player.main.GetComponent<Rigidbody>().mass += 1;
 
                 if (Player.main.CurrentHealth >= Player.main.MaxHealth - 10)
                     Player.main.CurrentHealth = Player.main.MaxHealth;
