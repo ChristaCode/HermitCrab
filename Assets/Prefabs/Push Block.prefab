@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 2957818988057100744}
   - component: {fileID: 2957818988057100747}
   - component: {fileID: 2957818988057100746}
+  - component: {fileID: 7978693718906326149}
   m_Layer: 0
   m_Name: Push Block
   m_TagString: Untagged
@@ -188,3 +189,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &7978693718906326149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957818988057100749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411e204f047c3714090a9dc570665a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 2957818987773042871}
