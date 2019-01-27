@@ -17,7 +17,7 @@ public class LayerFixer : MonoBehaviour
         float relativeZ = Player.main.transform.position.z - transform.position.z;
         int layer = 10 * (int)Mathf.Sign(relativeZ) + Mathf.RoundToInt(relativeZ * 10);
         foreach(SpriteRenderer spr in spriteRenderers) {
-        	spr.sortingOrder = layer;
+        	if (spr != null) spr.sortingOrder = layer;
         }
     }
 }

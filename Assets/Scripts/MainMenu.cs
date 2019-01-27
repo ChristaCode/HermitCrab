@@ -14,4 +14,12 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Restart()
+    {
+        UnityEngine.UI.Button button = GameObject.Find("Restart").GetComponent<UnityEngine.UI.Button>();
+        button.gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }

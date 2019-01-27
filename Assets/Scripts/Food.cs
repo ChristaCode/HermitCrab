@@ -13,12 +13,13 @@ public class Food : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             //Player.main.PlayerSize += 1;
-            Player.main.transform.localScale += new Vector3(.3F, .3F, .3F);
+            Player.main.transform.localScale += new Vector3(.1F, .1F, .1F);
             Debug.Log("widened scale");
 
             if (Player.main.shell == null) // if no shell, heal player
             {
                 Player.main.CurrentHealth += 10;
+                Player.main.GetComponent<Rigidbody>().mass += 1;
 
                 if (Player.main.CurrentHealth >= Player.main.MaxHealth - 10)
                     Player.main.CurrentHealth = Player.main.MaxHealth;
