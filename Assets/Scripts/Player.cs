@@ -27,6 +27,8 @@ public class Player : Singleton<Player> {
     public float MaxHealth = 100;
     public float CurrentHealth = 100;
 
+    UnityEngine.UI.Button restartButton;
+
     Rigidbody _rb;
     Image healthBar;
 
@@ -39,6 +41,9 @@ public class Player : Singleton<Player> {
         //crabAnimations = GetComponent<Animator>();
 
         _rb = GetComponent<Rigidbody>();
+
+        restartButton = GameObject.Find("Restart").GetComponent<UnityEngine.UI.Button>();
+        restartButton.gameObject.SetActive(false);
     }
 
     void Update()
@@ -72,8 +77,8 @@ public class Player : Singleton<Player> {
 
     void Death()
     {
-        //Destroy(gameObject);
-
+        restartButton.gameObject.SetActive(true);
+        Destroy(gameObject);
     }
 
     void FixedUpdate()
