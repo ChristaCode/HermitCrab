@@ -23,7 +23,7 @@ public class CameraManager : Singleton < CameraManager > {
 		transform.position = Vector3.SmoothDamp ( transform.position, tracker.position + trackerOffsets [ offsetUsed ], ref followSmooth, followSpeed );
 		transform.LookAt ( tracker.position, Vector3.up );
 
-        if (Shark.main.hasTriggered)
+        if (Shark.main != null && Shark.main.hasTriggered)
         {
             target = GameObject.Find("Trigger").transform;
         }
