@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 371128602795341960}
   - component: {fileID: 794764493}
   - component: {fileID: 794764494}
+  - component: {fileID: 7598323848251205673}
   m_Layer: 0
   m_Name: Hazard
   m_TagString: Untagged
@@ -154,6 +155,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &7598323848251205673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371128602795341967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411e204f047c3714090a9dc570665a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 6432083716264235221}
+  - {fileID: 6432083715856642911}
+  - {fileID: 6432083715529108964}
+  - {fileID: 6432083716710822810}
 --- !u!1 &6432083715529108966
 GameObject:
   m_ObjectHideFlags: 0
