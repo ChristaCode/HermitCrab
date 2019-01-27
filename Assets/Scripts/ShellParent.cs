@@ -7,6 +7,7 @@ public class ShellParent : MonoBehaviour
 {
 	[HideInInspector] public Transform attachParent;
 	public Vector3 shellOffset;
+	public SpriteRenderer spriteRenderer;
 
     public enum Type
     {
@@ -27,6 +28,8 @@ public class ShellParent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    	Attach(null);
         shellHealthBar = GameObject.Find("ShellHealthBar").GetComponent<Image>();
 
         switch (type)
@@ -75,7 +78,8 @@ public class ShellParent : MonoBehaviour
 		attachParent = newParent;
 		transform.parent = newParent;
 		transform.localPosition = shellOffset;
-		//Maybe some animation schenanigans
+		spriteRenderer.enabled = newParent == null;
+		spriteRenderer.sprite = Player.main.GetShellSprite(this);
 	}
 
 	public void Drop() {

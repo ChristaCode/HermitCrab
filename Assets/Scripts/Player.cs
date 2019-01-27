@@ -131,6 +131,12 @@ public class Player : Singleton<Player> {
         }
     }
 
+    public Sprite GetShellSprite(ShellParent shellObj) {
+
+        int shellIndex = (shellObj == null) ? 0 : ((int)shellObj.type + 1);
+        return shellSprites[shellIndex];
+    }
+
     private void OnWearShell(ShellParent newShell) {
         if (newShell != null) {
             newShell.Attach(transform);
@@ -144,8 +150,7 @@ public class Player : Singleton<Player> {
     }
 
     private void UpdateShellGraphic() {
-        int shellIndex = (_shell == null) ? 0 : ((int)_shell.type + 1);
-        shellRenderer.sprite = shellSprites[shellIndex];
+        shellRenderer.sprite = GetShellSprite(_shell);
     }
 
     private void DropShell() {
