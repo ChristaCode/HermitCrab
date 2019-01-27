@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallingRocks : MonoBehaviour
 {
     float rockTimer;
+    public GameObject rockInstancePrefab;
 
     Queue<GameObject> rocks = new Queue<GameObject>();
 
@@ -33,8 +34,9 @@ public class FallingRocks : MonoBehaviour
             GameObject sphere;
             if (rocks.Count < 15)
             {
-                sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                sphere.AddComponent<Hazard>();
+                //sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                //sphere.AddComponent<Hazard>();
+                sphere = Instantiate (rockInstancePrefab, null);
             }
             else
             {
