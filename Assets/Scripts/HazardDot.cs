@@ -32,6 +32,8 @@ public class HazardDot : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("Hazard/onTriggerStay");
+
         if (other.gameObject.tag == "Player")
         {
             if (Player.main.shell != null && Player.main.shell.currentHealth > 0)
