@@ -58,7 +58,12 @@ public class ShellParent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shellHealthBar.fillAmount = (float)(currentHealth * .01);
+        if (Player.main.shell == null)
+        {
+            shellHealthBar.fillAmount = 0;
+        } else {
+            shellHealthBar.fillAmount = (float)(currentHealth * .01);
+        }
     }
 
     public void Attach(Transform newParent) {
