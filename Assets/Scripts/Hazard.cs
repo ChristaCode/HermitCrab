@@ -6,6 +6,7 @@ public class Hazard : MonoBehaviour
 {
     private float damage;
     public Type type = Type.Rock;
+    public float rockSpeed = 3f;
 
     public enum Type
     {
@@ -49,6 +50,14 @@ public class Hazard : MonoBehaviour
                     Player.main.shell.currentHealth -= damage * Player.main.shell.DMG_MULT;
                 }
             }
+        }
+    }
+
+    void Update()
+    {
+        if (type == Type.Rock)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - (rockSpeed * Time.deltaTime), transform.position.z);
         }
     }
 }
