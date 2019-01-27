@@ -54,6 +54,11 @@ public class Player : Singleton<Player> {
             Death();
         }
 
+        if (Shark.main != null && Shark.main.hasTriggered)
+        {
+            Death();
+        }
+
         if (MoveHorizontal > 0f)
             facingRight = true;
         else if (MoveHorizontal < 0f)
