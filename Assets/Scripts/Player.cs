@@ -16,7 +16,7 @@ public class Player : Singleton<Player> {
     public Sprite[] shellSprites;
 
     public ShellParent shell {get{return _shell;} set{OnWearShell(value);}}
-    private ShellParent _shell;
+    public ShellParent _shell;
 
     float MoveHorizontal;
     float MoveVertical;
@@ -49,7 +49,7 @@ public class Player : Singleton<Player> {
     void Update()
     {
         // if there's no shell, update player health bar
-        if (shell == null)
+        if (shell == null && healthBar != null)
         {
             healthBar.fillAmount = (float)(CurrentHealth * .01);
         }
@@ -112,7 +112,7 @@ public class Player : Singleton<Player> {
             idleTimer = 0f;    
         }
 
-        if (crabAnimations != null && idleTimer >= 5f)
+        //if (crabAnimations != null && idleTimer >= 5f)
             //crabAnimations.SetTrigger("Sit");
 
         if (actionPressed) {
@@ -130,6 +130,7 @@ public class Player : Singleton<Player> {
         ShellParent[] shells = FindObjectsOfType<ShellParent>();
         foreach (ShellParent currentShell in shells) {
             float distance = (transform.position - currentShell.transform.position).magnitude;
+            Debug.Log(distance);
             if (distance <= SHELL_GRAB_RANGE) {
                 shell = currentShell;
             }
@@ -145,11 +146,11 @@ public class Player : Singleton<Player> {
     private void OnWearShell(ShellParent newShell) {
         if (newShell != null) {
             newShell.Attach(transform);
-        } else {
-            if (newShell != null) {
-                _shell.Drop();
-            }
         }
+        if (_shell != null) {
+            _shell.Drop();
+        }
+        
         _shell = newShell;
         UpdateShellGraphic();
     }

@@ -28,8 +28,7 @@ public class ShellParent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-    	Attach(null);
+        UpdateSprite();
         shellHealthBar = GameObject.Find("ShellHealthBar").GetComponent<Image>();
 
         switch (type)
@@ -77,14 +76,22 @@ public class ShellParent : MonoBehaviour
 
 		attachParent = newParent;
 		transform.parent = newParent;
-		transform.localPosition = shellOffset;
+		if (newParent != null) transform.localPosition = shellOffset;
 		spriteRenderer.enabled = newParent == null;
-		spriteRenderer.sprite = Player.main.GetShellSprite(this);
-	}
+        UpdateSprite();
+
+    }
 
 	public void Drop() {
 		attachParent = null;
 		transform.parent = null;
-	}
+        spriteRenderer.enabled = true;
+    }
+
+    private void UpdateSprite()
+    {
+
+        spriteRenderer.sprite = Player.main.GetShellSprite(this);
+    }
 
 }
