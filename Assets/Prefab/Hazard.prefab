@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 371128601310058528}
   - component: {fileID: 371128601310058529}
-  - component: {fileID: 371128601310058540}
   - component: {fileID: 6432083716264235221}
   m_Layer: 0
   m_Name: ThermalVent
@@ -27,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371128601310058535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: 0.3, z: -1.8}
+  m_LocalPosition: {x: -0.59, y: 0.3, z: -0.14}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 6432083715856642904}
@@ -47,20 +46,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &371128601310058540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371128601310058535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24932bbc2f4d74678b0e54ffe1b6cf71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  rockSpeed: 3
 --- !u!212 &6432083716264235221
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118,6 +103,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 371128602795341960}
+  - component: {fileID: 794764493}
+  - component: {fileID: 794764494}
   m_Layer: 0
   m_Name: Hazard
   m_TagString: Untagged
@@ -141,6 +128,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &794764493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371128602795341967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &794764494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371128602795341967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35cb454457a14cb7acadb685ff94900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &6432083715529108966
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6432083715529108966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.2, y: 0, z: -0.6}
+  m_LocalPosition: {x: 0.27, y: 0, z: -0.13}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 6432083716710822811}

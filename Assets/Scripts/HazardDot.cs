@@ -17,7 +17,7 @@ public class HazardDot : MonoBehaviour
         switch (type)
         {
             case Type.Heat:
-                damagePerSecond = 1;
+                damagePerSecond = 10;
                 break;
         }
     }
