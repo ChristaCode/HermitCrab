@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 713108187007138041}
   - component: {fileID: 713108187007138040}
+  - component: {fileID: 2026783099284981342}
   m_Layer: 0
   m_Name: Shell
   m_TagString: Untagged
@@ -131,3 +132,17 @@ MonoBehaviour:
   SPD_MULT: 0
   DMG_MULT: 0
   currentHealth: 0
+--- !u!114 &2026783099284981342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713108187007138047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411e204f047c3714090a9dc570665a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 713108186346749691}

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 public class Player : Singleton<Player> {
 
@@ -122,18 +124,25 @@ public class Player : Singleton<Player> {
     }    
 
     private void OnTryWearShell() {
-        if (shell != null) {
+        if (_shell != null) {
             shell = null;
+            Debug.Log("Had a shell, dropped");
             return;
         }
 
-        ShellParent[] shells = FindObjectsOfType<ShellParent>();
+        List<ShellParent> shells = FindObjectsOfType<ShellParent>().ToList();
+        shells = shells.OrderBy(
+            x => Vector3.Distance(this.transform.position,x.transform.position)
+        ).ToList();
+
+
         foreach (ShellParent currentShell in shells) {
             float distance = (transform.position - currentShell.transform.position).magnitude;
-            Debug.Log(distance);
+            Debug.Log("Shell at " + distance);
             if (distance <= SHELL_GRAB_RANGE) {
                 shell = currentShell;
             }
+            return;
         }
     }
 
