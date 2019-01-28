@@ -51,7 +51,7 @@ public class ShellParent : MonoBehaviour
             case Type.Round:
                 MAX_HEALTH = 100;
                 SPD_MULT = 1.5f;
-                DMG_MULT = 1f;
+                DMG_MULT = 0f;
                 break;
         }
         currentHealth = MAX_HEALTH;

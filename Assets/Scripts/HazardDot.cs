@@ -17,7 +17,7 @@ public class HazardDot : MonoBehaviour
         switch (type)
         {
             case Type.Heat:
-                damagePerSecond = 50;
+                damagePerSecond = 10;
                 break;
         }
     }
@@ -51,7 +51,7 @@ public class HazardDot : MonoBehaviour
                 else
                 {
                     // player death
-                    Player.main.CurrentHealth = 0;
+                    //Player.main.CurrentHealth = 0;
                 }
             }
         }
